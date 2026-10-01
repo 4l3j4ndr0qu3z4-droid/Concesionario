@@ -1,5 +1,6 @@
 package ec.edu.espoch.concessionaire;
 
+import ec.edu.espoch.concessionaire.objects.Automobile;
 import ec.edu.espoch.concessionaire.enumeration.CarType;
 import ec.edu.espoch.concessionaire.enumeration.Color;
 import ec.edu.espoch.concessionaire.enumeration.FuelType;
