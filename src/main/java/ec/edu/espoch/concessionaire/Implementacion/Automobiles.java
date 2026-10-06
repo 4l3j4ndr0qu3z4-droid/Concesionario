@@ -1,47 +1,53 @@
 package ec.edu.espoch.concessionaire.Implementacion;
 
-public class Automobiles {
-        public double accelerate(double speed) {
-        if (currentSpeed + speed > maximumSpeed) {
-            System.out.println("No se puede acelerar: se superaria la velocidad máxima de " + maximumSpeed + "Km/h");
+import ec.edu.espoch.concessionaire.interfaces.InterfaceAutomobile;
+import ec.edu.espoch.concessionaire.objects.Automobile;
+
+public class Automobiles implements InterfaceAutomobile{
+    
+        public double accelerate(double speed, Automobile carOne) {
+        if (carOne.getCurrentSpeed() + speed > carOne.getMaximumSpeed()) {
+            System.out.println("No se puede acelerar: se superaria la velocidad máxima de " + carOne.getMaximumSpeed() + "Km/h");
         } else {
-            currentSpeed += speed;
+            double aux = carOne.getCurrentSpeed() + speed;
+            carOne.setCurrentSpeed(aux);
         }
-        return currentSpeed;
+        return carOne.getCurrentSpeed();
 
     }
 
-    public double decelerate(double speed) {
-        if (currentSpeed - speed <= 0) {
+    public double decelerate(double speed, Automobile carOne) {
+        if (carOne.getCurrentSpeed() - speed <= 0) {
             System.out.println("No se puede desacelerar menos de 0 km/h");
         } else {
-            currentSpeed -= speed;        
+            double aux = carOne.getCurrentSpeed() - speed;
+            carOne.setCurrentSpeed(aux);
         }
-        return currentSpeed;
+        return carOne.getCurrentSpeed();
 
     }
 
     public double brake() {
-        return currentSpeed = 0;
+        return 0;
     }
 
-    public double estimateArrivalTime(double distance) {
-        double time = distance / currentSpeed;
+    public double estimateArrivalTime(double distance, Automobile carOne) {
+        double time = distance / carOne.getCurrentSpeed();
 
         return time;
     }
 
-    public void display() {
-        System.out.println("brand: " + brand);
-        System.out.println("model: " + model);
-        System.out.println("engine: " + engine);
-        System.out.println("fuelType: " + fuelType);
-        System.out.println("carType: " + carType);
-        System.out.println("numberOfDoors: " + numberOfDoors);
-        System.out.println("numberOfSeats: " + numberOfSeats);
-        System.out.println("maximumSpeed: " + maximumSpeed);
-        System.out.println("color: " + color);
-        System.out.println("currentSpeed: " + currentSpeed);
+    public void display(Automobile carOne) {
+        System.out.println("brand: " + carOne.getBrand());
+        System.out.println("model: " + carOne.getModel());
+        System.out.println("engine: " + carOne.getEngine());
+        System.out.println("fuelType: " + carOne.getFuelType());
+        System.out.println("carType: " + carOne.getCarType());
+        System.out.println("numberOfDoors: " + carOne.getNumberOfDoors());
+        System.out.println("numberOfSeats: " + carOne.getNumberOfSeats());
+        System.out.println("maximumSpeed: " + carOne.getMaximumSpeed());
+        System.out.println("color: " + carOne.getColor());
+        System.out.println("currentSpeed: " + carOne.getCurrentSpeed());
 
     }
 }
